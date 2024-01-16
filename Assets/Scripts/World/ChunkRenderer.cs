@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class ChunkRenderer : MonoBehaviour
 {
-    public const int ChunkWidth = 15;
+    public const int ChunkWidth = 25;
     public const int ChunkHeight = 128;
+    public const float BlockScale = 1;
 
     public ChunkData ChunkData;
     public GameWorld ParentWorld;
@@ -21,11 +22,11 @@ public class ChunkRenderer : MonoBehaviour
 
         for (int y = 0; y < ChunkHeight; y++)
         {
-            for(int x = 0; x < ChunkWidth; x++)
+            for (int x = 0; x < ChunkWidth; x++)
             {
                 for (int z = 0; z < ChunkWidth; z++)
                 {
-                    GenerateBlock(x,y,z);
+                    GenerateBlock(x, y, z);
                 }
             }
         }
@@ -107,55 +108,55 @@ public class ChunkRenderer : MonoBehaviour
 
     private void GenerateRightSide(Vector3Int blockPosition)
     {
-        verticles.Add(new Vector3(1, 0, 0) + blockPosition);
-        verticles.Add(new Vector3(1, 1, 0) + blockPosition);
-        verticles.Add(new Vector3(1, 0, 1) + blockPosition);
-        verticles.Add(new Vector3(1, 1, 1) + blockPosition);
+        verticles.Add((new Vector3(1, 0, 0) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(1, 1, 0) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(1, 0, 1) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(1, 1, 1) + blockPosition)*BlockScale);
 
         AddLastVerticlesSquare();
     }
     private void GenerateLeftSide(Vector3Int blockPosition)
     {
-        verticles.Add(new Vector3(0, 0, 0) + blockPosition);
-        verticles.Add(new Vector3(0, 0, 1) + blockPosition);
-        verticles.Add(new Vector3(0, 1, 0) + blockPosition);
-        verticles.Add(new Vector3(0, 1, 1) + blockPosition);
+        verticles.Add((new Vector3(0, 0, 0) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(0, 0, 1) + blockPosition)* BlockScale);
+        verticles.Add((new Vector3(0, 1, 0) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(0, 1, 1) + blockPosition)*BlockScale);
 
         AddLastVerticlesSquare();
     }
     private void GenerateFrontSide(Vector3Int blockPosition)
     {
-        verticles.Add(new Vector3(0, 0, 1) + blockPosition);
-        verticles.Add(new Vector3(1, 0, 1) + blockPosition);
-        verticles.Add(new Vector3(0, 1, 1) + blockPosition);
-        verticles.Add(new Vector3(1, 1, 1) + blockPosition);
+        verticles.Add((new Vector3(0, 0, 1) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(1, 0, 1) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(0, 1, 1) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(1, 1, 1) + blockPosition)*BlockScale);
 
         AddLastVerticlesSquare();
     }
     private void GenerateBackSide(Vector3Int blockPosition)
     {
-        verticles.Add(new Vector3(0, 0, 0) + blockPosition);
-        verticles.Add(new Vector3(0, 1, 0) + blockPosition);
-        verticles.Add(new Vector3(1, 0, 0) + blockPosition);
-        verticles.Add(new Vector3(1, 1, 0) + blockPosition);
+        verticles.Add((new Vector3(0, 0, 0) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(0, 1, 0) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(1, 0, 0) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(1, 1, 0) + blockPosition)*BlockScale);
 
         AddLastVerticlesSquare();
     }
     private void GenerateUpSide(Vector3Int blockPosition)
     {
-        verticles.Add(new Vector3(0, 1, 0) + blockPosition);
-        verticles.Add(new Vector3(0, 1, 1) + blockPosition);
-        verticles.Add(new Vector3(1, 1, 0) + blockPosition);
-        verticles.Add(new Vector3(1, 1, 1) + blockPosition);
+        verticles.Add((new Vector3(0, 1, 0) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(0, 1, 1) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(1, 1, 0) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(1, 1, 1) + blockPosition)*BlockScale);
 
         AddLastVerticlesSquare();
     }
     private void GenerateDownSide(Vector3Int blockPosition)
     {
-        verticles.Add(new Vector3(0, 0, 0) + blockPosition);
-        verticles.Add(new Vector3(1, 0, 0) + blockPosition);
-        verticles.Add(new Vector3(0, 0, 1) + blockPosition);
-        verticles.Add(new Vector3(1, 0, 1) + blockPosition);
+        verticles.Add((new Vector3(0, 0, 0) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(1, 0, 0) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(0, 0, 1) + blockPosition)*BlockScale);
+        verticles.Add((new Vector3(1, 0, 1) + blockPosition)*BlockScale);
 
         AddLastVerticlesSquare();
     }
