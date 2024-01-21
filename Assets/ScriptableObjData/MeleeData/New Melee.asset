@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6629fb9200391954aa101913b1f3ee6b, type: 3}
+  m_Script: {fileID: 11500000, guid: d821106e763f8d54a9fe9715bb92de90, type: 3}
   m_Name: New Melee
   m_EditorClassIdentifier: 
-  meleeName: TestMelee
-  description: FirstMeleeInGame
-  icon: {fileID: 0}
-  damage: 5
+  type: 2
+  itemName: Sword
+  description: Test Sword
+  icon: {fileID: 773203785, guid: 76b62c4a76c7aed4799153d0d078d67e, type: 3}
+  damage: 15
