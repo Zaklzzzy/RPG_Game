@@ -1,33 +1,57 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEditor.Progress;
 
-public class Inventory: MonoBehaviour
+public class Inventory : MonoBehaviour
 {
-    public List<InventorySlot> slots;
+    [SerializeField] private List<InventorySlot> slots;
+    [SerializeField] private List<GameObject> objects;
+    [SerializeField] private bool[] isEmpty;
+    [SerializeField] private short nowActive = 0;
 
-/*    private void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            //slots[0];
+            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            nowActive = 0;
+            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.red;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            //slots[1];
+            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            nowActive = 1;
+            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.red;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            //slots[2];
+            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            nowActive = 2;
+            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.red;
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            //slots[3];
+            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            nowActive = 3;
+            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.red;
         }
-    }*/
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("KeyCode.Q");
+            if (!isEmpty[nowActive])
+            {
+                slots[nowActive].itemOnSlot = null;
+                slots[nowActive].GetComponent<UnityEngine.UI.Image>().sprite = null;
+                objects[nowActive].transform.position = gameObject.transform.position;
+                objects[nowActive].SetActive(true);
+                objects[nowActive] = null;
+                isEmpty[nowActive] = true;
+
+            }
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -37,27 +61,15 @@ public class Inventory: MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("KeyCode.E");
-                slots[0].itemOnSlot = other.GetComponent<Item>()._item;
-                slots[0].GetComponent<Image>().sprite = other.GetComponent<Item>()._item.icon;
-                Destroy(other.gameObject);
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad2))
-            {
-                slots[1].itemOnSlot = other.GetComponent<Item>()._item;
-                slots[1].GetComponent<Image>().sprite = other.GetComponent<Item>()._item.icon;
-                Destroy(other.gameObject);
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad3))
-            {
-                slots[2].itemOnSlot = other.GetComponent<Item>()._item;
-                slots[2].GetComponent<Image>().sprite = other.GetComponent<Item>()._item.icon;
-                Destroy(other.gameObject);
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad4))
-            {
-                slots[3].itemOnSlot = other.GetComponent<Item>()._item;
-                slots[3].GetComponent<Image>().sprite = other.GetComponent<Item>()._item.icon;
-                Destroy(other.gameObject);
+                if (isEmpty[nowActive])
+                {
+                    slots[nowActive].itemOnSlot = other.GetComponent<Item>()._item;
+                    slots[nowActive].GetComponent<UnityEngine.UI.Image>().sprite = other.GetComponent<Item>()._item.icon;
+                    objects[nowActive] = other.gameObject;
+                    objects[nowActive].SetActive(false);
+                    isEmpty[nowActive] = false;
+
+                }
             }
         }
     }
