@@ -1,51 +1,63 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class Inventory: MonoBehaviour
 {
-    [SerializeField] private GameObject inventoryUI;
-    [SerializeField] private Transform inventory;
+    public List<InventorySlot> slots;
 
-    private bool isOpen = false;
-
-    public List<InventorySlot> slots = new List<InventorySlot>();
-    private void Start()
+/*    private void Update()
     {
-        for (int i = 0; i < inventory.childCount; i++)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if(inventory.GetChild(i).GetComponent<InventorySlot>() != null)
-            {
-                slots.Add(inventory.GetChild(i).GetComponent<InventorySlot>());
-            }
+            //slots[0];
         }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            isOpen = !isOpen;
-            if (isOpen)
-            {
-                inventoryUI.SetActive(true);
-            }
-            else
-            {
-                inventoryUI.SetActive(false);
-            }
+            //slots[1];
         }
-    }
-
-    private void AddItem(ItemData _item)
-    {
-        foreach (InventorySlot slot in slots)
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (!slot.isEmpty)
+            //slots[2];
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            //slots[3];
+        }
+    }*/
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Item"))
+        {
+            Debug.Log("Item");
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                slot.item = _item;
-                slot.isEmpty = !slot.isEmpty;
+                Debug.Log("KeyCode.E");
+                slots[0].itemOnSlot = other.GetComponent<Item>()._item;
+                slots[0].GetComponent<Image>().sprite = other.GetComponent<Item>()._item.icon;
+                Destroy(other.gameObject);
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                slots[1].itemOnSlot = other.GetComponent<Item>()._item;
+                slots[1].GetComponent<Image>().sprite = other.GetComponent<Item>()._item.icon;
+                Destroy(other.gameObject);
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad3))
+            {
+                slots[2].itemOnSlot = other.GetComponent<Item>()._item;
+                slots[2].GetComponent<Image>().sprite = other.GetComponent<Item>()._item.icon;
+                Destroy(other.gameObject);
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad4))
+            {
+                slots[3].itemOnSlot = other.GetComponent<Item>()._item;
+                slots[3].GetComponent<Image>().sprite = other.GetComponent<Item>()._item.icon;
+                Destroy(other.gameObject);
             }
         }
     }

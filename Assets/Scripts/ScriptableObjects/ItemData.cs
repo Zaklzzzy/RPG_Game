@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.IO.Enumeration;
 using UnityEngine;
 
 public enum ItemType {Default, Distance, Melee}
