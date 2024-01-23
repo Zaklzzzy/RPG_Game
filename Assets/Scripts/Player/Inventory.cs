@@ -9,7 +9,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private List<InventorySlot> slots;
     [SerializeField] private List<GameObject> objects;
     [SerializeField] private bool[] isEmpty;
-    [SerializeField] private short nowActive = 0;
+    private short nowActive = 0;
+    private GameObject nowItem;
 
     private void Update()
     {
@@ -39,7 +40,6 @@ public class Inventory : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("KeyCode.Q");
             if (!isEmpty[nowActive])
             {
                 slots[nowActive].itemOnSlot = null;
@@ -51,26 +51,23 @@ public class Inventory : MonoBehaviour
 
             }
         }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Item"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("Item");
-            if (Input.GetKeyDown(KeyCode.E))
+            if (isEmpty[nowActive])
             {
-                Debug.Log("KeyCode.E");
-                if (isEmpty[nowActive])
-                {
-                    slots[nowActive].itemOnSlot = other.GetComponent<Item>()._item;
-                    slots[nowActive].GetComponent<UnityEngine.UI.Image>().sprite = other.GetComponent<Item>()._item.icon;
-                    objects[nowActive] = other.gameObject;
-                    objects[nowActive].SetActive(false);
-                    isEmpty[nowActive] = false;
+                slots[nowActive].itemOnSlot = nowItem.GetComponent<Item>()._item;
+                slots[nowActive].GetComponent<UnityEngine.UI.Image>().sprite = nowItem.GetComponent<Item>()._item.icon;
+                objects[nowActive] = nowItem.gameObject;
+                objects[nowActive].SetActive(false);
+                isEmpty[nowActive] = false;
 
-                }
             }
         }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Item")) nowItem = other.gameObject;
     }
 }
