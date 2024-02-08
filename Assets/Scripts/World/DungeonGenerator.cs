@@ -18,13 +18,15 @@ public class DungeonGenerator : MonoBehaviour
         dungeonGrid = new Room[dungeonSize, dungeonSize];
         dungeonGrid[startRoom, startRoom] = startRoomPrefab;
 
-        for(int i = 0; i < dungeonSize; i++)
+        Generate();
+
+        /*for(int i = 0; i < dungeonSize; i++)
         {
             CreateRoom();
-        }
+        }*/
     }
 
-    private void CreateRoom()
+    /*private void CreateRoom()
     {
         HashSet<Vector2Int> roomPlaces = new HashSet<Vector2Int>();
         for(int x = 0; x < dungeonSize; x++)
@@ -45,46 +47,33 @@ public class DungeonGenerator : MonoBehaviour
 
         Room newRoom = Instantiate(roomPrefab);
         Vector2Int position = roomPlaces.ElementAt(Random.Range(0, roomPlaces.Count));
-        //newRoom.RandomConst();
         
         newRoom.transform.position = new Vector3(position.x - 5, 0, position.y - 5) * 103;
         dungeonGrid[position.x, position.y] = newRoom;
-    }
-
-    private bool ConnectRoom(Room room, Vector2Int pos)
+    }*/
+    private void Generate()
     {
-        int maxX = dungeonGrid.GetLength(0) - 1;
-        int maxY = dungeonGrid.GetLength(1) - 1;
+        float x = 1;
+        float y = 1;
 
-        List<Vector2Int> nearRooms = new List<Vector2Int>();
-
-        if (!room.constLeft && pos.x < maxX && dungeonGrid[pos.x - 1, pos.y] != null && !dungeonGrid[pos.x - 1, pos.y].constRight) nearRooms.Add(Vector2Int.left);
-        if (!room.constRight && pos.x > 0 && dungeonGrid[pos.x + 1, pos.y] != null && !dungeonGrid[pos.x + 1, pos.y].constLeft) nearRooms.Add(Vector2Int.right);
-        if (!room.constLeft && pos.y < maxY && dungeonGrid[pos.x, pos.y + 1] != null && !dungeonGrid[pos.x, pos.y + 1].constBack) nearRooms.Add(Vector2Int.up);
-        if (!room.constLeft && pos.y > 0 && dungeonGrid[pos.x, pos.y - 1] != null && !dungeonGrid[pos.x, pos.y - 1].constFront) nearRooms.Add(Vector2Int.down);
-
-        if(nearRooms.Count == 0) return false;
-
-        Vector2Int selectedDirection = nearRooms[Random.Range(0, nearRooms.Count)];
-        Room selectedRoom = dungeonGrid[pos.x + selectedDirection.x, pos.y + selectedDirection.y];
-
-        if(selectedDirection == Vector2Int.up)
+        for (int i = 0; i < dungeonSize-1; i++)
         {
-            room.FrontSwitcher();
+            CreateRoom(x, y);
+            Debug.Log("CreateRoom" + i);
+            int random = Random.Range(0, 4);
+            if (random == 0 && x < dungeonSize) x++;
+            if (random == 1 && y < dungeonSize) y++;
+            Debug.Log("x" + x);
+            Debug.Log("y" + y);
         }
-        if (selectedDirection == Vector2Int.down)
+    }
+    private void CreateRoom(float x, float y)
+    {
+        if(dungeonGrid[(int)x, (int)y] == null)
         {
-            room.BackSwitcher();
+            Room newRoom = Instantiate(roomPrefab);
+            newRoom.transform.position = new Vector3(x, 0, y) * 103;
+            dungeonGrid[(int)x, (int)y] = newRoom;
         }
-        if (selectedDirection == Vector2Int.left)
-        {
-            room.LeftSwitcher();
-        }
-        if (selectedDirection == Vector2Int.right)
-        {
-            room.RightSwitcher();
-        }
-
-        return true;
     }
 }
