@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 5367613045190044617, guid: 38b291e4ec6571448913a381749e5c3c, type: 3}
   startRoomPrefab: {fileID: 6479926518861425113, guid: e5ae791bf5f61374f86b43849db2162f, type: 3}
-  dungeonSize: 11
+  dungeonSize: 10
   startRoom: 5
 --- !u!4 &20295957
 Transform:

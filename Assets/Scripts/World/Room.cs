@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.ComponentModel;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Room : MonoBehaviour
 {
@@ -20,20 +18,12 @@ public class Room : MonoBehaviour
     [SerializeField] private GameObject tunnelRight;
     [SerializeField] private GameObject tunnelBack;
 
-    public void RandomConst()
-    {
-        constLeft = Random.Range(0, 2) != 1;
-        constFront = Random.Range(0, 2) != 1;
-        constRight = Random.Range(0, 2) != 1;
-        constBack = Random.Range(0, 2) != 1;
-        DisableConst();
-    }
     public void DisableConst()
     {
-        if (constLeft) tunnelLeft.SetActive(!tunnelLeft.activeSelf);
-        if (constFront) tunnelFront.SetActive(!tunnelFront.activeSelf);
-        if (constRight) tunnelRight.SetActive(!tunnelRight.activeSelf);
-        if (constBack) tunnelBack.SetActive(!tunnelBack.activeSelf);
+        if (constLeft) tunnelLeft.SetActive(false);
+        if (constFront) tunnelFront.SetActive(false);
+        if (constRight) tunnelRight.SetActive(false);
+        if (constBack) tunnelBack.SetActive(false);
 }
     public void LeftSwitcher()
     {

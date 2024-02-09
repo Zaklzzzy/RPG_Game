@@ -2154,7 +2154,7 @@ GameObject:
   - component: {fileID: 1904730772041382439}
   - component: {fileID: 6959797505846604739}
   m_Layer: 0
-  m_Name: DoorBack
+  m_Name: DoorLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2752,7 +2752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2530502265965200307}
   m_Layer: 0
-  m_Name: Back
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3811,7 +3811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6476952130696602667}
   m_Layer: 0
-  m_Name: Left
+  m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4016,7 +4016,7 @@ GameObject:
   - component: {fileID: 3543383646748763602}
   - component: {fileID: 546027312559905379}
   m_Layer: 0
-  m_Name: DoorFront
+  m_Name: DoorRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4208,10 +4208,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1691260126898534951}
+  - {fileID: 2530502265965200307}
   - {fileID: 6476952130696602667}
   - {fileID: 5687619356389384323}
   - {fileID: 6540252707874403414}
-  - {fileID: 2530502265965200307}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5367613045190044617
@@ -4230,14 +4230,14 @@ MonoBehaviour:
   constFront: 0
   constRight: 0
   constBack: 0
-  doorLeft: {fileID: 6834051041978151326}
-  doorFront: {fileID: 5978722446768050770}
-  doorRight: {fileID: 6309216195541277939}
-  doorBack: {fileID: 2500119217272383414}
-  tunnelLeft: {fileID: 5787185202527491294}
-  tunnelFront: {fileID: 7258952346595214010}
-  tunnelRight: {fileID: 3639170848897515697}
-  tunnelBack: {fileID: 7056167747081764283}
+  doorLeft: {fileID: 2500119217272383414}
+  doorFront: {fileID: 6834051041978151326}
+  doorRight: {fileID: 5978722446768050770}
+  doorBack: {fileID: 6309216195541277939}
+  tunnelLeft: {fileID: 7056167747081764283}
+  tunnelFront: {fileID: 5787185202527491294}
+  tunnelRight: {fileID: 7258952346595214010}
+  tunnelBack: {fileID: 3639170848897515697}
 --- !u!64 &1923441433047683199
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4272,7 +4272,7 @@ GameObject:
   - component: {fileID: 1561127359227510221}
   - component: {fileID: 6478407973978954508}
   m_Layer: 0
-  m_Name: DoorRight
+  m_Name: DoorBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4529,7 +4529,7 @@ GameObject:
   - component: {fileID: 6160078016314902369}
   - component: {fileID: 5095103583339411493}
   m_Layer: 0
-  m_Name: DoorLeft
+  m_Name: DoorFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5132,7 +5132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6540252707874403414}
   m_Layer: 0
-  m_Name: Right
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5422,7 +5422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5687619356389384323}
   m_Layer: 0
-  m_Name: Front
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5665,7 +5665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4703356932044703147, guid: 1b9471a2bc9ffda429b116522c1c2160, type: 3}
       propertyPath: m_Name
-      value: TunnelLeft
+      value: TunnelFront
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5732,7 +5732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4703356932044703147, guid: 1b9471a2bc9ffda429b116522c1c2160, type: 3}
       propertyPath: m_Name
-      value: TunnelBack
+      value: TunnelLeft
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5799,7 +5799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4703356932044703147, guid: 1b9471a2bc9ffda429b116522c1c2160, type: 3}
       propertyPath: m_Name
-      value: TunnelFront
+      value: TunnelRight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5866,7 +5866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4703356932044703147, guid: 1b9471a2bc9ffda429b116522c1c2160, type: 3}
       propertyPath: m_Name
-      value: TunnelRight
+      value: TunnelBack
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
