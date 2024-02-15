@@ -38,7 +38,6 @@ public class DungeonGenerator : MonoBehaviour
 
         count = 0;
 
-        /*for (int i = 0; i < dungeonSize-1; i++)*/
         while (count < dungeonSize)
         {
             CreateRoom(x, y);
@@ -62,7 +61,7 @@ public class DungeonGenerator : MonoBehaviour
         }
         DisableTunnels();
     }
-    private void CreateRoom(int x, int y)
+    private void CreateRoom(int x, int y) //Create Room to coordinate
     {
         if(dungeonGrid[x, y] == null)
         {
@@ -72,7 +71,7 @@ public class DungeonGenerator : MonoBehaviour
             count++;
         }
     }
-    private void DisableTunnels()
+    private void DisableTunnels() //Disable useless tunnel
     {
         for(int x = 0; x < dungeonSize; x++)
         {

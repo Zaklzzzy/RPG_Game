@@ -6,6 +6,4 @@ public enum AttackType { melee, distance }
 public class EnemyData : ScriptableObject
 {
     public AttackType type;
-    public short movementSpeed;
-    public short HP;
 }
