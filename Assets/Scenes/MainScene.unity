@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &20295956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +151,6 @@ MonoBehaviour:
   roomPrefab: {fileID: 5367613045190044617, guid: 38b291e4ec6571448913a381749e5c3c, type: 3}
   startRoomPrefab: {fileID: 6479926518861425113, guid: e5ae791bf5f61374f86b43849db2162f, type: 3}
   dungeonSize: 10
-  startRoom: 5
 --- !u!4 &20295957
 Transform:
   m_ObjectHideFlags: 0
@@ -1556,7 +1555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &1343036694
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2707,7 +2706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1895586061
 MonoBehaviour:
   m_ObjectHideFlags: 0
