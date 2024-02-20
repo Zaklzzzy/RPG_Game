@@ -13,4 +13,3 @@ MonoBehaviour:
   m_Name: New Distance Enemy
   m_EditorClassIdentifier: 
   type: 1
-  attackSpeed: 5

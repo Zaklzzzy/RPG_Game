@@ -5,9 +5,18 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    //AI Navigation
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform player;
-    [SerializeField] private EnemyData data;
+    [SerializeField] private float movementSpeed = 3.5f;
+
+    //Damage and Health
+    [SerializeField] private short HP;
+    [SerializeField] private float attackSpeed;
+    [SerializeField] private short damage;
+
+    //Animation and Particles
+
 
     private void Awake()
     {
@@ -22,10 +31,19 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            agent.speed = 3.5f;
+            agent.speed = movementSpeed;
             
         }
         agent.transform.LookAt(player.position);
         agent.destination = player.position;
+    }
+
+    public void TakeDamage(short damage)
+    {
+        HP -= damage;
+        if (HP <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
