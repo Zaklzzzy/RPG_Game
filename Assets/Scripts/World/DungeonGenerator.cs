@@ -41,8 +41,19 @@ public class DungeonGenerator : MonoBehaviour
         /*for (int i = 0; i < dungeonSize-1; i++)*/
         while (count < dungeonSize)
         {
-            CreateRoom(x, y);
-            Debug.Log("CreateRoom" + count + "X:" + x + "Y:" + y);
+
+            if (count == 0)
+            {
+                CreateStartRoom(x, y);
+                Debug.Log("CreateStartRoom" + count + "X:" + x + "Y:" + y);
+            }
+            else
+            {
+                CreateRoom(x, y);
+                Debug.Log("CreateRoom" + count + "X:" + x + "Y:" + y);
+            }
+            
+            
             int random = Random.Range(0, 4);
             switch (random)
             { 
@@ -72,9 +83,23 @@ public class DungeonGenerator : MonoBehaviour
             count++;
         }
     }
+    private void CreateStartRoom(int x, int y)
+    {
+        if (dungeonGrid[x, y] == null)
+        {
+            Room newRoom = Instantiate(startRoomPrefab);
+            newRoom.transform.position = new Vector3(x, 0, y) * 103;
+            dungeonGrid[x, y] = newRoom;
+        }
+    }
     private void DisableTunnels()
     {
-        for(int x = 0; x < dungeonSize; x++)
+        int tempX = dungeonSize / 2, tempY = dungeonSize / 2;
+        if (dungeonGrid[tempX - 1, tempY] == null) dungeonGrid[tempX, tempY].transform.rotation = Quaternion.Euler(-90,0, 90);
+        else if (dungeonGrid[tempX, tempY + 1] == null) dungeonGrid[tempX, tempY].transform.rotation = Quaternion.Euler(-90, 0, 180);
+        else if (dungeonGrid[tempX, tempY - 1] == null) dungeonGrid[tempX, tempY].transform.rotation = Quaternion.Euler(-90, 0, 270);
+
+        for (int x = 0; x < dungeonSize; x++)
         {
             for (int y = 0; y < dungeonSize; y++)
             {

@@ -28,13 +28,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799186101962278833}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -55.086323, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1500, y: 1500, z: 1476.6312}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2436562548886883372}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &676644672728120236
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -99,10 +100,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51b43b0a43f81145ad2b30d3e5105e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: {fileID: 0}
-  front: {fileID: 0}
-  right: {fileID: 0}
-  back: {fileID: 0}
+  constLeft: 1
+  constFront: 0
+  constRight: 1
+  constBack: 1
+  doorLeft: {fileID: 2809055001213779240}
+  doorFront: {fileID: 2809055001213779240}
+  doorRight: {fileID: 2809055001213779240}
+  doorBack: {fileID: 2809055001213779240}
+  tunnelLeft: {fileID: 2809055001213779240}
+  tunnelFront: {fileID: 2809055001213779240}
+  tunnelRight: {fileID: 2809055001213779240}
+  tunnelBack: {fileID: 2809055001213779240}
 --- !u!64 &-673574624070932463
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -125,3 +134,34 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3112977340068577888, guid: aeb9f15a744da74409b459fa216e039e, type: 3}
+--- !u!1 &2809055001213779240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2436562548886883372}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2436562548886883372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2809055001213779240}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6588312009320277840}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
