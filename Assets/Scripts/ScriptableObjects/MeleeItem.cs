@@ -7,7 +7,7 @@ public class MeleeItem : ItemData
 {
     public short damage;
 
-    private void Start()
+    private void Awake()
     {
         type = ItemType.Melee;
     }

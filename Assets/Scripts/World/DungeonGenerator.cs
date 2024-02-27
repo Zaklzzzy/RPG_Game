@@ -3,25 +3,26 @@ using UnityEngine.SceneManagement;
 
 public class DungeonGenerator : MonoBehaviour
 {
-    [SerializeField] private Room roomPrefab;
-    [SerializeField] private Room startRoomPrefab;
-    [SerializeField] private int dungeonSize;
+    [Header("Generator Properties")]
+    [SerializeField] private Room _roomPrefab;
+    [SerializeField] private Room _startRoomPrefab;
+    [SerializeField] private int _dungeonSize;
 
-    private int count = 0;
+    private int _count = 0;
 
-    private int[] typesOfRoom = new int[5] { 0,0,0,0,0};
+    private int[] _typesOfRoom = new int[5] { 0,0,0,0,0};
     //basic - 0
     //chest - 1
     //type3 - 2
     //type4 - 3
     //type5 - 4
 
-    private Room[,] dungeonGrid;
+    private Room[,] _dungeonGrid;
 
     private void Start()
     {
-        dungeonGrid = new Room[dungeonSize, dungeonSize];
-        //dungeonGrid[startRoom, startRoom] = startRoomPrefab;
+        _dungeonGrid = new Room[_dungeonSize, _dungeonSize];
+        //_dungeonGrid[startRoom, startRoom] = _startRoomPrefab;
 
         Generate();
     }
@@ -35,42 +36,42 @@ public class DungeonGenerator : MonoBehaviour
     }
     private void Generate()
     {
-        int x = dungeonSize/2;
-        int y = dungeonSize/2;
+        int x = _dungeonSize/2;
+        int y = _dungeonSize/2;
 
-        count = 0;
+        _count = 0;
 
-        while (count < dungeonSize)
+        while (_count < _dungeonSize)
         {
 
-/*            if (count == 0)
+/*            if (_count == 0)
             {
                 CreateStartRoom(x, y);
-                Debug.Log("CreateStartRoom" + count + "X:" + x + "Y:" + y);
+                Debug.Log("CreateStartRoom" + _count + "X:" + x + "Y:" + y);
             }
             else
             {
                 CreateRoom(x, y);
-                Debug.Log("CreateRoom" + count + "X:" + x + "Y:" + y);
+                Debug.Log("CreateRoom" + _count + "X:" + x + "Y:" + y);
             }*/
 
             CreateRoom(x, y);
-            Debug.Log("CreateRoom" + count + "X:" + x + "Y:" + y);
+            Debug.Log("CreateRoom" + _count + "X:" + x + "Y:" + y);
 
             int random = Random.Range(0, 4);
             switch (random)
             { 
                 case 0:
-                    if (x + 1 < dungeonSize && dungeonGrid[x + 1, y] == null) x++;
+                    if (x + 1 < _dungeonSize && _dungeonGrid[x + 1, y] == null) x++;
                     break;
                 case 1:
-                    if (y + 1 < dungeonSize && dungeonGrid[x, y + 1] == null) y++;
+                    if (y + 1 < _dungeonSize && _dungeonGrid[x, y + 1] == null) y++;
                     break;
                 case 2:
-                    if (x - 1 >= 0 && dungeonGrid[x - 1, y] == null) x--;
+                    if (x - 1 >= 0 && _dungeonGrid[x - 1, y] == null) x--;
                     break;
                 case 3:
-                    if (y - 1 >= 0 && dungeonGrid[x, y - 1] == null) y--;
+                    if (y - 1 >= 0 && _dungeonGrid[x, y - 1] == null) y--;
                     break;
             }           
         }
@@ -78,55 +79,55 @@ public class DungeonGenerator : MonoBehaviour
     }
 /*    private void CreateRoom(int x, int y)
     {
-        if(dungeonGrid[x, y] == null)
+        if(_dungeonGrid[x, y] == null)
         {
-            Room newRoom = Instantiate(roomPrefab);
+            Room newRoom = Instantiate(_roomPrefab);
             newRoom.transform.position = new Vector3(x, 0, y) * 103;
-            dungeonGrid[x, y] = newRoom;
-            count++;
+            _dungeonGrid[x, y] = newRoom;
+            _count++;
         }
     }*/
     private void CreateRoom(int x, int y)
     {
         
 
-        if (dungeonGrid[x, y] == null)
+        if (_dungeonGrid[x, y] == null)
         {
-            Room Prefab = roomPrefab;
+            Room Prefab = _roomPrefab;
 
-            if (typesOfRoom[0] > 2)
+            if (_typesOfRoom[0] > 2)
             {
                 int swtch = Random.Range(0, 8);
                 switch (swtch)
                 {
                     case 0:
                         {
-                            Prefab = roomPrefab;//chestRoom
-                            typesOfRoom[1]++;
+                            Prefab = _roomPrefab;//chestRoom
+                            _typesOfRoom[1]++;
                             break;
                         }
                     case 2:
                         {
-                            Prefab = roomPrefab;//otherRoom
-                            typesOfRoom[2]++;
+                            Prefab = _roomPrefab;//otherRoom
+                            _typesOfRoom[2]++;
                             break;
                         }
                     case 4:
                         {
-                            Prefab = roomPrefab;//otherRoom
-                            typesOfRoom[3]++;
+                            Prefab = _roomPrefab;//otherRoom
+                            _typesOfRoom[3]++;
                             break;
                         }
                     case 6:
                         {
-                            Prefab = roomPrefab;//otherRoom
-                            typesOfRoom[4]++;
+                            Prefab = _roomPrefab;//otherRoom
+                            _typesOfRoom[4]++;
                             break;
                         }
                     case 8:
                         {
-                            Prefab = roomPrefab;//defaultRoom
-                            typesOfRoom[0]++;
+                            Prefab = _roomPrefab;//defaultRoom
+                            _typesOfRoom[0]++;
                             break;
                         }
                     default:
@@ -135,42 +136,42 @@ public class DungeonGenerator : MonoBehaviour
                         }
                 }
             }
-            else { typesOfRoom[0]++; }
+            else { _typesOfRoom[0]++; }
 
             Room newRoom = Instantiate(Prefab);
             newRoom.transform.position = new Vector3(x, 0, y) * 103;
-            dungeonGrid[x, y] = newRoom;
-            count++;
-            Debug.Log("Types Of Room:" + typesOfRoom[0] + ", " + typesOfRoom[1] + ", " + typesOfRoom[2] + ", " + typesOfRoom[3] + ", " + typesOfRoom[4]);
+            _dungeonGrid[x, y] = newRoom;
+            _count++;
+            Debug.Log("Types Of Room:" + _typesOfRoom[0] + ", " + _typesOfRoom[1] + ", " + _typesOfRoom[2] + ", " + _typesOfRoom[3] + ", " + _typesOfRoom[4]);
         }
     }
     private void CreateStartRoom(int x, int y)
     {
-        if (dungeonGrid[x, y] == null)
+        if (_dungeonGrid[x, y] == null)
         {
-            Room newRoom = Instantiate(startRoomPrefab);
+            Room newRoom = Instantiate(_startRoomPrefab);
             newRoom.transform.position = new Vector3(x, 0, y) * 103;
-            dungeonGrid[x, y] = newRoom;
+            _dungeonGrid[x, y] = newRoom;
         }
     }
     private void DisableTunnels()
     {
-/*        int tempX = dungeonSize / 2, tempY = dungeonSize / 2;
-        if (dungeonGrid[tempX - 1, tempY] == null) dungeonGrid[tempX, tempY].transform.rotation = Quaternion.Euler(-90,0, 90);
-        else if (dungeonGrid[tempX, tempY + 1] == null) dungeonGrid[tempX, tempY].transform.rotation = Quaternion.Euler(-90, 0, 180);
-        else if (dungeonGrid[tempX, tempY - 1] == null) dungeonGrid[tempX, tempY].transform.rotation = Quaternion.Euler(-90, 0, 270);*/
+/*        int tempX = _dungeonSize / 2, tempY = _dungeonSize / 2;
+        if (_dungeonGrid[tempX - 1, tempY] == null) _dungeonGrid[tempX, tempY].transform.rotation = Quaternion.Euler(-90,0, 90);
+        else if (_dungeonGrid[tempX, tempY + 1] == null) _dungeonGrid[tempX, tempY].transform.rotation = Quaternion.Euler(-90, 0, 180);
+        else if (_dungeonGrid[tempX, tempY - 1] == null) _dungeonGrid[tempX, tempY].transform.rotation = Quaternion.Euler(-90, 0, 270);*/
 
-        for (int x = 0; x < dungeonSize; x++)
+        for (int x = 0; x < _dungeonSize; x++)
         {
-            for (int y = 0; y < dungeonSize; y++)
+            for (int y = 0; y < _dungeonSize; y++)
             {
-                if (dungeonGrid[x,y] != null)
+                if (_dungeonGrid[x,y] != null)
                 { 
-                    if(x == dungeonSize - 1 || dungeonGrid[x + 1, y] == null) dungeonGrid[x, y].constRight = true;
-                    if (x == 0 || dungeonGrid[x - 1, y] == null) dungeonGrid[x, y].constLeft = true;
-                    if (y == dungeonSize - 1 || dungeonGrid[x, y + 1] == null) dungeonGrid[x, y].constFront = true;
-                    if (y == 0 || dungeonGrid[x, y - 1] == null) dungeonGrid[x, y].constBack = true;
-                    dungeonGrid[x, y].DisableConst();
+                    if(x == _dungeonSize - 1 || _dungeonGrid[x + 1, y] == null) _dungeonGrid[x, y].constRight = true;
+                    if (x == 0 || _dungeonGrid[x - 1, y] == null) _dungeonGrid[x, y].constLeft = true;
+                    if (y == _dungeonSize - 1 || _dungeonGrid[x, y + 1] == null) _dungeonGrid[x, y].constFront = true;
+                    if (y == 0 || _dungeonGrid[x, y - 1] == null) _dungeonGrid[x, y].constBack = true;
+                    _dungeonGrid[x, y].DisableConst();
                 }
             }
         }

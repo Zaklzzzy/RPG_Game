@@ -7,7 +7,7 @@ public class DistanceItem : ItemData
 {
     public short damage;
 
-    private void Start()
+    private void Awake()
     {
         type = ItemType.Distance;
     }

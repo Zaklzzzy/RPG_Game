@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float turnSpeed = 500f;
+    [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private float _turnSpeed = 500f;
 
-    private Rigidbody rb;
-    RaycastHit hit;
+    private Rigidbody _rb;
+    RaycastHit _hit;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -23,17 +23,17 @@ public class PlayerController : MonoBehaviour
         
         //Vector3 mousePosition = new Vector3(Input.mousePosition.x, 0, Input.mousePosition.z);
 
-        Physics.Raycast(ray, out hit);
-        Vector3 targetPosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+        Physics.Raycast(ray, out _hit);
+        Vector3 targetPosition = new Vector3(_hit.point.x, transform.position.y, _hit.point.z);
         transform.LookAt(targetPosition);
 
         //Quaternion toRotation = Quaternion.LookRotation(mousePosition1.normalized, Vector3.up);
-        //transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, _turnSpeed * Time.deltaTime);
 /*        if (mousePosition.magnitude > 0.1f)
         {
             
         }*/
 
-        rb.MovePosition(transform.position + move.normalized * moveSpeed * Time.deltaTime);
+        _rb.MovePosition(transform.position + move.normalized * _moveSpeed * Time.deltaTime);
     }
 }

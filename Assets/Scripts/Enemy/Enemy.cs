@@ -4,8 +4,8 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     //AI Navigation
-    [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Transform player;
+    [SerializeField] private NavMeshAgent _agent;
+    [SerializeField] private Transform _player;
     [SerializeField] private float movementSpeed = 3.5f;
 
     //Damage and Health
@@ -18,22 +18,22 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
-        player = FindFirstObjectByType<PlayerController>().transform;
+        _agent = GetComponent<NavMeshAgent>();
+        _player = FindFirstObjectByType<PlayerController>().transform;
     }
     private void FixedUpdate()
     {
-        if (Vector3.Distance(agent.transform.position,player.position) < 12f)
+        if (Vector3.Distance(_agent.transform.position,_player.position) < 12f)
         {
-            agent.speed = 0f;
+            _agent.speed = 0f;
         }
         else
         {
-            agent.speed = movementSpeed;
+            _agent.speed = movementSpeed;
             
         }
-        agent.transform.LookAt(player.position);
-        agent.destination = player.position;
+        _agent.transform.LookAt(_player.position);
+        _agent.destination = _player.position;
     }
 
     public void TakeDamage(short damage)

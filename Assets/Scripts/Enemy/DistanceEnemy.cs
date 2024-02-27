@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Distance Enemy", menuName = "Enemy/Distance", order = 51)]
 public class DistanceEnemy : EnemyData
 {
-    private void Start()
+    private void Awake()
     {
         type = AttackType.distance;
     }

@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Melee Enemy", menuName = "Enemy/Melee", order = 51)]
 public class MeleeEnemy : EnemyData
 {
-    private void Start()
+    private void Awake()
     {
         type = AttackType.melee;
     }

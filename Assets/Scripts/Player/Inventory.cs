@@ -6,60 +6,60 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private List<InventorySlot> slots;
-    [SerializeField] private List<GameObject> objects;
-    [SerializeField] private bool[] isEmpty;
-    private short nowActive = 0;
-    private GameObject nowItem;
+    [SerializeField] private List<InventorySlot> _slots;
+    [SerializeField] private List<Item> _objects;
+    [SerializeField] private bool[] _isEmpty;
+    private short _nowActive = 0;
+    private Item _nowItem;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            nowActive = 0;
-            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            _slots[_nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            _nowActive = 0;
+            _slots[_nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.red;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            nowActive = 1;
-            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            _slots[_nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            _nowActive = 1;
+            _slots[_nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.red;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            nowActive = 2;
-            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            _slots[_nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            _nowActive = 2;
+            _slots[_nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.red;
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            nowActive = 3;
-            slots[nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            _slots[_nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            _nowActive = 3;
+            _slots[_nowActive].GetComponent<UnityEngine.UI.Image>().color = Color.red;
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (!isEmpty[nowActive])
+            if (!_isEmpty[_nowActive])
             {
-                slots[nowActive].itemOnSlot = null;
-                slots[nowActive].GetComponent<UnityEngine.UI.Image>().sprite = null;
-                objects[nowActive].transform.position = gameObject.transform.position;
-                objects[nowActive].SetActive(true);
-                objects[nowActive] = null;
-                isEmpty[nowActive] = true;
+                _slots[_nowActive].itemOnSlot = null;
+                _slots[_nowActive].GetComponent<UnityEngine.UI.Image>().sprite = null;
+                _objects[_nowActive].transform.position = gameObject.transform.position;
+                _objects[_nowActive].gameObject.SetActive(true);
+                _objects[_nowActive] = null;
+                _isEmpty[_nowActive] = true;
 
             }
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (isEmpty[nowActive])
+            if (_isEmpty[_nowActive])
             {
-                slots[nowActive].itemOnSlot = nowItem.GetComponent<Item>()._item;
-                slots[nowActive].GetComponent<UnityEngine.UI.Image>().sprite = nowItem.GetComponent<Item>()._item.icon;
-                objects[nowActive] = nowItem.gameObject;
-                objects[nowActive].SetActive(false);
-                isEmpty[nowActive] = false;
+                _slots[_nowActive].itemOnSlot = _nowItem.item;
+                _slots[_nowActive].GetComponent<UnityEngine.UI.Image>().sprite = _nowItem.item.icon;
+                _objects[_nowActive] = _nowItem.gameObject.GetComponent<Item>();
+                _objects[_nowActive].gameObject.SetActive(false);
+                _isEmpty[_nowActive] = false;
 
             }
         }
@@ -68,6 +68,6 @@ public class Inventory : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Item")) nowItem = other.gameObject;
+        if (other.CompareTag("Item")) _nowItem = other.gameObject.GetComponent<Item>();
     }
 }
