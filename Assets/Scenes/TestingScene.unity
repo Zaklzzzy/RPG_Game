@@ -545,7 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68181d6c22b83e8458586d9853867e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: {fileID: 11400000, guid: cee02d218e74b984991666c0179f4adb, type: 2}
+  item: {fileID: 0}
 --- !u!23 &431064573
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1119,8 +1119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f72759a9aadca74b93d53d22fce60b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7.25
-  turnSpeed: 10
+  _moveSpeed: 5
 --- !u!136 &721042649
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1210,6 +1209,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2076652158}
+  - {fileID: 1530347006839507035}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &721042653
@@ -1247,17 +1247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e537e928cc1604b86a837b1a646d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots:
-  - {fileID: 1967543485}
-  - {fileID: 1510384069}
-  - {fileID: 1663568926}
-  - {fileID: 635865289}
-  objects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isEmpty: 01010101
+  _slots: []
+  _objects: []
+  _isEmpty: 
 --- !u!195 &721042655
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1376,7 +1368,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &1343036694
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1502,10 +1494,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7319788aa56f0c64c8b2a3d5fc64f9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1343036694}
-  player: {fileID: 0}
+  _agent: {fileID: 1343036694}
+  _player: {fileID: 0}
   movementSpeed: 3.5
-  HP: 0
+  HP: 100
   attackSpeed: 0
   damage: 0
 --- !u!136 &1343036700
@@ -1525,7 +1517,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 6.86
   m_Height: 1.9999999
@@ -2618,7 +2610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68181d6c22b83e8458586d9853867e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: {fileID: 11400000, guid: cee02d218e74b984991666c0179f4adb, type: 2}
+  item: {fileID: 0}
 --- !u!136 &1786468892
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3042,6 +3034,127 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &394010688434975540
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195279221015712481}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -876546973899608171, guid: 00877df564eb05b4f87e73773eb2f1d9, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!4 &1530347006839507035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195279221015712481}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.13843377, y: 0.13843377, z: 0.69342345, w: 0.69342345}
+  m_LocalPosition: {x: 0.36, y: 0, z: 0.18}
+  m_LocalScale: {x: 41.15, y: 19.86, z: 41.15}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 721042652}
+  m_LocalEulerAnglesHint: {x: -22.58, y: 0, z: 90}
+--- !u!1 &2195279221015712481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1530347006839507035}
+  - component: {fileID: 2491398704033908734}
+  - component: {fileID: 394010688434975540}
+  - component: {fileID: 2491398704033908735}
+  - component: {fileID: 2491398704033908736}
+  m_Layer: 0
+  m_Name: PrototypeSword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!33 &2491398704033908734
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195279221015712481}
+  m_Mesh: {fileID: -5495902117074765545, guid: 00877df564eb05b4f87e73773eb2f1d9, type: 3}
+--- !u!65 &2491398704033908735
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195279221015712481}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.0038469732, y: 0.009584594, z: 0.023209713}
+  m_Center: {x: -0.0000042929205, y: 5.2025345e-10, z: 0.019113926}
+--- !u!114 &2491398704033908736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195279221015712481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bd888ed6ba2524a9c7932c486e16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meleeItem: {fileID: 11400000, guid: cee02d218e74b984991666c0179f4adb, type: 2}
 --- !u!33 &4367873221665821518
 MeshFilter:
   m_ObjectHideFlags: 0

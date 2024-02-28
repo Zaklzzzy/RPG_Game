@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Distance : MonoBehaviour
 {
     [SerializeField] private Transform point;
     [SerializeField] private Bullet bullet;
