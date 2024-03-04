@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private GameObject _plane;
+    [SerializeField] private Animator _animator;
 
     private Rigidbody _rb;
     RaycastHit _hit;
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         Vector3 move = new Vector3(x, 0, z);
 
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         Physics.Raycast(ray, out _hit);
@@ -25,5 +28,7 @@ public class PlayerController : MonoBehaviour
         transform.LookAt(targetPosition);
 
         _rb.MovePosition(transform.position + move.normalized * _moveSpeed * Time.deltaTime);
+        _animator.SetFloat("Horizontal", x);
+        _animator.SetFloat("Vertical", z);
     }
 }

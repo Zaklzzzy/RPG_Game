@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 20295957}
   - component: {fileID: 20295956}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: DungeonManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,9 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66594b521f3dcdb49afdc45933559ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPrefab: {fileID: 5367613045190044617, guid: 38b291e4ec6571448913a381749e5c3c, type: 3}
-  startRoomPrefab: {fileID: 6479926518861425113, guid: e5ae791bf5f61374f86b43849db2162f, type: 3}
-  dungeonSize: 10
+  _roomPrefab: {fileID: 5367613045190044617, guid: 38b291e4ec6571448913a381749e5c3c, type: 3}
+  _startRoomPrefab: {fileID: 5367613045190044617, guid: 38b291e4ec6571448913a381749e5c3c, type: 3}
+  _dungeonSize: 10
 --- !u!4 &20295957
 Transform:
   m_ObjectHideFlags: 0
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68181d6c22b83e8458586d9853867e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: {fileID: 11400000, guid: cee02d218e74b984991666c0179f4adb, type: 2}
+  item: {fileID: 0}
 --- !u!23 &431064573
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1298,8 +1298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f72759a9aadca74b93d53d22fce60b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7.25
-  turnSpeed: 10
+  _moveSpeed: 5
+  _plane: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!136 &721042649
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1427,17 +1428,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e537e928cc1604b86a837b1a646d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots:
-  - {fileID: 1967543485}
-  - {fileID: 1510384069}
-  - {fileID: 1663568926}
-  - {fileID: 635865289}
-  objects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isEmpty: 01010101
+  _slots: []
+  _objects: []
+  _isEmpty: 
 --- !u!195 &721042655
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1681,8 +1674,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7319788aa56f0c64c8b2a3d5fc64f9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1343036694}
-  player: {fileID: 0}
+  _agent: {fileID: 0}
+  _player: {fileID: 0}
   movementSpeed: 3.5
   HP: 100
   attackSpeed: 7.5
@@ -2664,7 +2657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68181d6c22b83e8458586d9853867e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: {fileID: 11400000, guid: cee02d218e74b984991666c0179f4adb, type: 2}
+  item: {fileID: 0}
 --- !u!136 &1786468892
 CapsuleCollider:
   m_ObjectHideFlags: 0

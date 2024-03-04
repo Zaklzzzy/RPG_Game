@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemType {Default, Distance, Melee}
-public class ItemData : ScriptableObject
+public abstract class ItemData : ScriptableObject
 {
     public ItemType type;
     public string itemName;
