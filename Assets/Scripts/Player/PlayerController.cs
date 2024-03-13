@@ -2,21 +2,34 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private Animator _animator;
 
+    //New Input System
+    //private IControllable _controllable;
+    private GameInput _gameInput;
+
+    //Rotate And Movement
     private Rigidbody _rb;
     RaycastHit _hit;
 
-    private void Start()
+    private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+
+        _gameInput = new GameInput();
+        _gameInput.Enable();
+
+        //_controllable = GetComponent<IControllable>();
     }
 
     private void FixedUpdate()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        var inputDirection = _gameInput.Gameplay.Movement.ReadValue<Vector2>();
+
+        float x = inputDirection.x;
+        float z = inputDirection.y;
         Vector3 move = new Vector3(x, 0, z);
 
 
@@ -30,4 +43,5 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat("Horizontal", x);
         _animator.SetFloat("Vertical", z);
     }
+
 }

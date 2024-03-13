@@ -16,6 +16,7 @@ public class Melee : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             _boxCollider.enabled = true;
+            Invoke("OffTrigger", 2f);
         }
     }
 
@@ -26,5 +27,10 @@ public class Melee : MonoBehaviour
             other.GetComponent<Enemy>().TakeDamage(_meleeItem.damage);
             _boxCollider.enabled = false;
         }
+    }
+
+    private void OffTrigger()
+    { 
+        _boxCollider.enabled = false;
     }
 }
