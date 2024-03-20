@@ -1881,9 +1881,9 @@ GameObject:
   - component: {fileID: 1343036698}
   - component: {fileID: 1343036697}
   - component: {fileID: 1343036696}
+  - component: {fileID: 1343036699}
   - component: {fileID: 1343036695}
   - component: {fileID: 1343036694}
-  - component: {fileID: 1343036699}
   - component: {fileID: 1343036700}
   m_Layer: 0
   m_Name: Enemy
@@ -2025,6 +2025,7 @@ MonoBehaviour:
   damage: 0
   point: {fileID: 1469260297}
   bullet: {fileID: -5563677482688647331, guid: 17e88c26c7edd864ca4842e2ef723250, type: 3}
+  enableShoot: 0
 --- !u!136 &1343036700
 CapsuleCollider:
   m_ObjectHideFlags: 0
