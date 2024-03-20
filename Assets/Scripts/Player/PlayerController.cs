@@ -1,10 +1,19 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private Animator _animator;
+
+    [Header("Health")]
+    [SerializeField] private int _maxHP = 100;
+    [SerializeField] private int HP = 100;
+    [SerializeField] private GameObject healthUI;
+    [SerializeField] private TextMeshProUGUI counter;
 
     //New Input System
     //private IControllable _controllable;
@@ -43,5 +52,18 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat("Horizontal", x);
         _animator.SetFloat("Vertical", z);
     }
-
+    public void TakeDamage(short damage)
+    {
+        HP -= damage;
+        healthUI.GetComponent<Image>().fillAmount = (float)HP/100;
+        counter.text = HP.ToString() + "/" + _maxHP.ToString();
+        if(HP <= _maxHP / 2)
+        {
+            counter.color = Color.black;
+        }
+        if (HP <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }
